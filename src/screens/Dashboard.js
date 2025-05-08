@@ -1,25 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {
   View,
-  ScrollView,
-  Text,
-  Pressable,
-  TextInput,
-  TouchableOpacity,
   BackHandler,
+  StyleSheet,
 } from 'react-native';
 
-import {Header} from '../components/Header';
-// import Products from '../components/Products';
-import {Categories} from '../components/Categories';
-import {ProductCarousel} from '../components/ProductCarousel';
-import {ProductSlider} from '../components/ProductSlider';
-import {ProductGrid} from '../components/ProductGrid';
-
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
-
-import styles from '../styles';
+import HeroSection from '../components/HeroSection';
+import { ScrollView } from 'react-native-gesture-handler';
+import ServicesPreview from '../components/ServicesPreview';
+import { SpecialOffersCarousel } from '../components/SpecialOffersCarousel';
+import { ServicesSection } from '../components/services/ServicesSection';
 
 const Dashboard = ({navigation}) => {
   const [searching, setSearching] = useState(false);
@@ -30,7 +20,6 @@ const Dashboard = ({navigation}) => {
     setSearching(false);
     setSearchText('');
     setSearched(false);
-
     return true;
   };
 
@@ -45,47 +34,20 @@ const Dashboard = ({navigation}) => {
   }, []);
 
   return (
-    <View>
-      <View style={styles.searchBar}>
-        <TextInput
-          value={searchText}
-          onChangeText={e => setSearchText(e)}
-          style={searching ? styles.searchInputFocused : styles.searchInput}
-          onFocus={() => setSearching(true)}
-          onBlur={() => setSearching(false)}
-          selectionColor="#000"
-        />
-        <TouchableOpacity
-          onPress={() => searchText.length > 0 && setSearched(true)}
-          style={styles.searchBtn}>
-          <FontAwesomeIcon
-            style={{color: '#000', marginRight: 10}}
-            icon={faSearch}
-          />
-        </TouchableOpacity>
-      </View>
-      <ScrollView style={{paddingTop: 70}}>
-        {/* <Header heading="" navigation={navigation} /> */}
-
-        {searched ? (
-          <>
-            <ProductGrid navigation={navigation} searchText={searchText} />
-          </>
-        ) : (
-          <>
-            <Text style={styles.heading}>Explore</Text>
-            {/* <Categories /> */}
-            <ProductCarousel navigation={navigation} />
-            <Text style={styles.heading}>Popular Products</Text>
-            <ProductSlider navigation={navigation} />
-            <Text style={styles.heading}>Top Picks For You</Text>
-            <ProductSlider navigation={navigation} />
-            <View style={{height: 100}}></View>
-          </>
-        )}
-      </ScrollView>
-    </View>
+    <ScrollView style={styles.container}>
+      <HeroSection />
+      <SpecialOffersCarousel/>
+      <ServicesSection />
+      <ServicesPreview />
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff', // or any suitable background
+    flex: 1,
+  },
+});
 
 export default Dashboard;

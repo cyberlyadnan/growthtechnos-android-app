@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Dimensions } from 'react-native';
+import { Image, Dimensions, View } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
 const { width } = Dimensions.get('window');
@@ -9,51 +9,96 @@ const Tutorial = ({ navigation }) => {
     <Onboarding
       onSkip={() => navigation.navigate('login')}
       onDone={() => navigation.navigate('login')}
-      containerStyles={{ paddingHorizontal: 20 }}
+      containerStyles={{
+        paddingHorizontal: 24,
+        backgroundColor: '#F8FAFC',
+      }}
       titleStyles={{
         fontFamily: 'Poppins-SemiBold',
-        fontSize: 24,
+        fontSize: 26,
         color: '#284B71',
-        marginBottom: 10,
+        marginBottom: 12,
+        textAlign: 'center',
       }}
       subTitleStyles={{
         fontFamily: 'Poppins-Regular',
         fontSize: 16,
-        color: '#444',
+        color: '#555',
+        textAlign: 'center',
+        lineHeight: 24,
+      }}
+      bottomBarColor="#fff"
+      imageContainerStyles={{
+        paddingBottom: 20,
+        marginTop: 20,
+      }}
+      pageIndexCallback={(index) => console.log('Page:', index)}
+      controlStatusBar={false}
+      dotStyle={{
+        backgroundColor: '#D0D7DE',
+        width: 8,
+        height: 8,
+        borderRadius: 4,
+        marginHorizontal: 3,
+      }}
+      activeDotStyle={{
+        backgroundColor: '#284B71',
+        width: 20,
+        height: 8,
+        borderRadius: 5,
+        marginHorizontal: 3,
       }}
       pages={[
         {
-          backgroundColor: '#fff',
+          backgroundColor: '#F8FAFC',
           image: (
-            <Image
-              source={require('../../assets/icons/add_your_info.png')}
-              style={{ width: width * 0.6, height: width * 0.6, resizeMode: 'contain' }}
-            />
+            <View style={{ alignItems: 'center' }}>
+              <Image
+                source={require('../../assets/icons/add_your_info.png')}
+                style={{
+                  width: width * 0.65,
+                  height: width * 0.65,
+                  resizeMode: 'contain',
+                }}
+              />
+            </View>
           ),
           title: 'Create an Account',
-          subtitle: 'Quickly sign up and personalize your experience.',
+          subtitle: 'Sign up and tailor your web experience in just a few taps.',
         },
         {
-          backgroundColor: '#fff',
+          backgroundColor: '#F8FAFC',
           image: (
-            <Image
-              source={require('../../assets/icons/add_to_cart.png')}
-              style={{ width: width * 0.6, height: width * 0.6, resizeMode: 'contain' }}
-            />
+            <View style={{ alignItems: 'center' }}>
+              <Image
+                source={require('../../assets/icons/add_to_cart.png')}
+                style={{
+                  width: width * 0.65,
+                  height: width * 0.65,
+                  resizeMode: 'contain',
+                }}
+              />
+            </View>
           ),
-          title: 'Add to Cart',
-          subtitle: 'Browse products and add them to your cart with ease.',
+          title: 'Add Services',
+          subtitle: 'Explore our solutions and bookmark what fits your vision.',
         },
         {
-          backgroundColor: '#fff',
+          backgroundColor: '#F8FAFC',
           image: (
-            <Image
-              source={require('../../assets/icons/payment.png')}
-              style={{ width: width * 0.6, height: width * 0.6, resizeMode: 'contain' }}
-            />
+            <View style={{ alignItems: 'center' }}>
+              <Image
+                source={require('../../assets/icons/payment.png')}
+                style={{
+                  width: width * 0.65,
+                  height: width * 0.65,
+                  resizeMode: 'contain',
+                }}
+              />
+            </View>
           ),
-          title: 'Secure Payment',
-          subtitle: 'Complete your purchase using secure payment methods.',
+          title: 'Let’s Build Together',
+          subtitle: 'Confirm your project and collaborate with our expert team.',
         },
       ]}
     />

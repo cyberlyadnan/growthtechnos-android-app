@@ -116,7 +116,7 @@ const Tabs = () => {
           component={HomeStack}
           options={{
             tabBarIcon: ({ focused }) => (
-              <FontAwesomeIcon icon={faHome} color={focused ? '#284B71' : '#aaa'} size={20} />
+              <FontAwesomeIcon icon={faHome} color={focused ? '#0B2E56' : '#aaa'} size={24} />
             ),
           }}
         />
@@ -125,7 +125,7 @@ const Tabs = () => {
           component={About}
           options={{
             tabBarIcon: ({ focused }) => (
-              <FontAwesomeIcon icon={faInfoCircle} color={focused ? '#284B71' : '#aaa'} size={20} />
+              <FontAwesomeIcon icon={faInfoCircle} color={focused ? '#0B2E56' : '#aaa'} size={24} />
             ),
           }}
         />
@@ -135,7 +135,7 @@ const Tabs = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               // <AnimatedButton>
-                <FontAwesomeIcon icon={faTools} color={focused ? '#fff' : '#284B71'} size={28} style={{ backgroundColor: focused ? '#284B71' : '#eee', padding: 18, borderRadius: 50 }} />
+                <FontAwesomeIcon icon={faTools} color={focused ? '#fff' : '#0B2E56'} size={28} style={{ backgroundColor: focused ? '#06548B' : '#eee', padding: 18, borderRadius: 50 }} />
               // </AnimatedButton>
             ),
           }}
@@ -145,7 +145,7 @@ const Tabs = () => {
           component={Portfolio}
           options={{
             tabBarIcon: ({ focused }) => (
-              <FontAwesomeIcon icon={faBriefcase} color={focused ? '#284B71' : '#aaa'} size={20} />
+              <FontAwesomeIcon icon={faBriefcase} color={focused ? '#0B2E56' : '#aaa'} size={24} />
             ),
           }}
         />
@@ -154,7 +154,7 @@ const Tabs = () => {
           component={Contact}
           options={{
             tabBarIcon: ({ focused }) => (
-              <FontAwesomeIcon icon={faPhone} color={focused ? '#284B71' : '#aaa'} size={20} />
+              <FontAwesomeIcon icon={faPhone} color={focused ? '#0B2E56' : '#aaa'} size={24} />
             ),
           }}
         />
