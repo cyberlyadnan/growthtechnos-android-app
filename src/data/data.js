@@ -41,17 +41,10 @@ export const servicesData = [
 export const servicesCardsData = [
   {
     id: '1',
-    title: 'App Development',
+    title: 'App Dev',
     subtitle: 'iOS & Android',
     icon: require('../../assets/icons/mobile-app.png'),
     featured: true
-  },
-  {
-    id: '2',
-    title: 'Business Intelligence',
-    subtitle: 'Data Dashboards',
-    icon: require('../../assets/icons/engagement.png'),
-    featured: false
   },
   {
     id: '3',
@@ -78,7 +71,7 @@ export const servicesCardsData = [
     id: '6',
     title: 'Web Development',
     subtitle: 'Responsive Sites',
-    icon: require('../../assets/icons/web-dev.png'), // You might want to add this icon
+    icon: require('../../assets/icons/engagement.png'), // You might want to add this icon
     featured: false
   }
 ];
@@ -90,27 +83,27 @@ export const offersData = [
     title: 'Free SEO Audit',
     subtitle: 'For New Clients',
     discount: '100% Free',
-    image: 'https://your-agency-site.com/images/seo-audit-offer.jpg',
+    image: 'https://bloggerspassion.com/wp-content/uploads/2020/07/Site-Audit-from-SEMrush.webp',
   },
   {
     id: '2',
     title: 'Website + Hosting',
     subtitle: 'Get 1 Year Hosting Free',
     discount: 'Save ₹5000+',
-    image: 'https://your-agency-site.com/images/website-hosting-offer.jpg',
+    image: 'https://kinsta.com/wp-content/uploads/2021/11/what-is-web-hosting-1-1200x675.jpg',
   },
   {
     id: '3',
     title: 'E-commerce Discount',
     subtitle: 'Launch Your Store Today',
     discount: 'Flat 20% Off',
-    image: 'https://your-agency-site.com/images/ecommerce-offer.jpg',
+    image: 'https://media.licdn.com/dms/image/v2/D4D12AQFshh0iT0r09w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1683213063568?e=2147483647&v=beta&t=u_zLFHMCQWBsVS_9lVu044OgUy0PLhoAn_XUDrmeWgE',
   },
   {
     id: '4',
     title: 'Logo + Branding Combo',
     subtitle: 'For Startups & Creators',
     discount: 'Upto 30% Off',
-    image: 'https://your-agency-site.com/images/branding-offer.jpg',
+    image: 'https://cdn.dribbble.com/userupload/17636565/file/original-680b9e940b6b2239dfeeff4e22a49d66.png?resize=400x0',
   },
 ];

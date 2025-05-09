@@ -7,6 +7,11 @@ import { SpecialOffersCarousel } from '../components/SpecialOffersCarousel';
 import { ServicesSection } from '../components/services/ServicesSection';
 import ServicesCategorySection from '../components/services tags/ServicesCategorySection';
 import { style } from 'deprecated-react-native-prop-types/DeprecatedViewPropTypes';
+import { ProductCarousel } from '../components/ProductCarousel';
+import { ProductSlider } from '../components/ProductSlider';
+import { Product } from './Product';
+import TestimonialSection from '../components/TestimonialSection';
+import WhyChooseUs from '../components/WhyChooseUs';
 
 const Dashboard = ({ navigation }) => {
   const [searching, setSearching] = useState(false);
@@ -40,13 +45,24 @@ const Dashboard = ({ navigation }) => {
         <ServicesSection />
       </View>
 
-      <View style={styles.section}>
+      {/* <View style={styles.section}>
         <HeroSection />
+      </View> */}
+
+
+      <View style={styles.courosel}>
+      <ProductCarousel navigation={navigation}/>
       </View>
 
-      <View style={styles.section}>
+      <WhyChooseUs />
+      {/* <ProductSlider /> */}
+      <TestimonialSection />
+      {/* <Product/> */}
+      
+
+      {/* <View style={styles.section}>
         <ServicesPreview />
-      </View>
+      </View> */}
     </ScrollView>
   );
 };
@@ -57,12 +73,17 @@ const styles = StyleSheet.create({
     borderBottomRightRadius:20,
     backgroundColor:"#0B2E56"
   },
+  courosel:{
+    paddingTop:20,
+    paddingBottom:20
+  },
   container: {
     backgroundColor: '#fff',
     flex: 1,
+    paddingBottom:60,
   },
   scrollContent: {
-    paddingBottom: 16,
+    paddingBottom: 70,
   },
   section: {
     marginBottom: -20,

@@ -3,13 +3,18 @@ import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import ServiceCategoryCard from './ServiceCategoryCard';
 import { servicesCardsData } from '../../data/data';
 import { TextColorPrimary } from '../../styles/theme';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { useNavigation } from '@react-navigation/native';
 
 const ServicesCategorySection = () => {
+  const navigation = useNavigation(); // ✅ hook
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.heading}>Our Services</Text>
-        <Text style={styles.seeAll}>See All</Text>
+        <Pressable style={styles.seeAll} onPress={() => navigation.navigate('Service')}>
+          <Text style={styles.seeAllText}>See All</Text>
+        </Pressable>
       </View>
 
       <ScrollView

@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Pressable,
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel-v4';
 import { offersData } from '../data/data';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
@@ -17,6 +19,7 @@ const { width } = Dimensions.get('window');
 export const SpecialOffersCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = useRef(null);
+  const navigation = useNavigation(); // ✅ hook
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -24,9 +27,9 @@ export const SpecialOffersCarousel = () => {
         <Text style={styles.subtitle}>{item.subtitle}</Text>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.discount}>{item.discount}</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Order Now</Text>
-        </TouchableOpacity>
+        <Pressable onPress={()=>navigation.navigate("Contact")} style={styles.button}>
+          <Text style={styles.buttonText}>Contact Now</Text>
+        </Pressable>
       </View>
       <Image source={{ uri: item.image }} style={styles.image} />
     </View>
@@ -52,7 +55,7 @@ export const SpecialOffersCarousel = () => {
       />
 
       <Pagination
-        dotsLength={offerData.length}
+        dotsLength={offersData.length}
         activeDotIndex={activeSlide}
         dotStyle={styles.dot}
         inactiveDotStyle={styles.inactiveDot}
