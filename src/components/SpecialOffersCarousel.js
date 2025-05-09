@@ -8,39 +8,11 @@ import {
   Dimensions,
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel-v4';
+import { offersData } from '../data/data';
 
 const { width } = Dimensions.get('window');
 
-const offerData = [
-  {
-    id: '1',
-    title: 'Get Special Offer',
-    subtitle: 'Offers on Accessories',
-    discount: 'Up to 20%',
-    image: 'https://testting.growthtechnos.com/wp-content/uploads/2025/04/delightfull_corbett__nainital_escape_1726330567657243965-600x450.webp',
-  },
-  {
-    id: '2',
-    title: 'Buy 1 Get 1 Free',
-    subtitle: 'Exclusive Treats',
-    discount: 'Today Only!',
-    image: 'https://testting.growthtechnos.com/wp-content/uploads/2025/04/delightfull_corbett__nainital_escape_1726330567657243965-600x450.webp',
-  },
-  {
-    id: '2',
-    title: 'Buy 1 Get 1 Free',
-    subtitle: 'Exclusive Treats',
-    discount: 'Today Only!',
-    image: 'https://testting.growthtechnos.com/wp-content/uploads/2025/04/delightfull_corbett__nainital_escape_1726330567657243965-600x450.webp',
-  },
-  {
-    id: '2',
-    title: 'Buy 1 Get 1 Free',
-    subtitle: 'Exclusive Treats',
-    discount: 'Today Only!',
-    image: 'https://testting.growthtechnos.com/wp-content/uploads/2025/04/delightfull_corbett__nainital_escape_1726330567657243965-600x450.webp',
-  },
-];
+
 
 export const SpecialOffersCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -69,7 +41,7 @@ export const SpecialOffersCarousel = () => {
 
       <Carousel
         ref={carouselRef}
-        data={offerData}
+        data={offersData}
         renderItem={renderItem}
         sliderWidth={width}
         itemWidth={width * 0.9}
@@ -95,19 +67,24 @@ export const SpecialOffersCarousel = () => {
 const styles = StyleSheet.create({
   wrapper: {
     marginTop: 0,
-    paddingHorizontal: 8,
+    marginBottom:-16,
+    // paddingTop:16,
+    // backgroundColor:"#ededed",
+    borderTopRightRadius:26,
+    borderTopLeftRadius:26
+    // paddingHorizontal: 8,
     // paddingVertical:16,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 8,
-    paddingLeft:8,
+    paddingLeft:16,
   },
   heading: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#333',
+    color: '#fff',
   },
   seeAll: {
     fontSize: 14,
@@ -116,7 +93,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#FFF6F0',
+    backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,
     marginTop:6,
@@ -169,7 +146,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#06548B',
+    backgroundColor: '#fff',
   },
   inactiveDot: {
     backgroundColor: '#ccc',

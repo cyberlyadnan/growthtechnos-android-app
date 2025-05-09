@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Dimensions, View } from 'react-native';
+import { Image, Dimensions, View, Text } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
 const { width } = Dimensions.get('window');
@@ -11,21 +11,22 @@ const Tutorial = ({ navigation }) => {
       onDone={() => navigation.navigate('login')}
       containerStyles={{
         paddingHorizontal: 24,
-        backgroundColor: '#F8FAFC',
+        backgroundColor: '#fff',
       }}
       titleStyles={{
         fontFamily: 'Poppins-SemiBold',
-        fontSize: 26,
-        color: '#284B71',
+        fontSize: 24,
+        color: '#000',
         marginBottom: 12,
         textAlign: 'center',
       }}
       subTitleStyles={{
         fontFamily: 'Poppins-Regular',
-        fontSize: 16,
+        fontSize: 15,
         color: '#555',
         textAlign: 'center',
-        lineHeight: 24,
+        lineHeight: 22,
+        paddingHorizontal: 12,
       }}
       bottomBarColor="#fff"
       imageContainerStyles={{
@@ -42,7 +43,7 @@ const Tutorial = ({ navigation }) => {
         marginHorizontal: 3,
       }}
       activeDotStyle={{
-        backgroundColor: '#284B71',
+        backgroundColor: '#FF6A00',
         width: 20,
         height: 8,
         borderRadius: 5,
@@ -50,45 +51,47 @@ const Tutorial = ({ navigation }) => {
       }}
       pages={[
         {
-          backgroundColor: '#F8FAFC',
+          backgroundColor: '#fff',
           image: (
             <View style={{ alignItems: 'center' }}>
               <Image
-                source={require('../../assets/icons/add_your_info.png')}
+                source={require('../../assets/icons/add_to_cart.png')} // Placeholder: use your app logo or splash icon
                 style={{
-                  width: width * 0.65,
-                  height: width * 0.65,
+                  width: width * 0.5,
+                  height: width * 0.5,
                   resizeMode: 'contain',
                 }}
               />
             </View>
           ),
-          title: 'Create an Account',
-          subtitle: 'Sign up and tailor your web experience in just a few taps.',
+          title: 'Unlock the Future of\nEvent Booking App',
+          subtitle:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
         },
         {
-          backgroundColor: '#F8FAFC',
+          backgroundColor: '#fff',
           image: (
             <View style={{ alignItems: 'center' }}>
               <Image
-                source={require('../../assets/icons/add_to_cart.png')}
+                source={require('../../assets/icons/add_to_cart.png')} // Placeholder: design showing event cards
                 style={{
-                  width: width * 0.65,
-                  height: width * 0.65,
+                  width: width * 0.7,
+                  height: width * 0.7,
                   resizeMode: 'contain',
                 }}
               />
             </View>
           ),
-          title: 'Add Services',
-          subtitle: 'Explore our solutions and bookmark what fits your vision.',
+          title: 'Uncover Exciting Upcoming\nand Nearby Events',
+          subtitle:
+            'Discover local happenings and explore event categories that suit your interests.',
         },
         {
-          backgroundColor: '#F8FAFC',
+          backgroundColor: '#fff',
           image: (
             <View style={{ alignItems: 'center' }}>
               <Image
-                source={require('../../assets/icons/payment.png')}
+                source={require('../../assets/icons/add_to_cart.png')} // Placeholder: people icons and abstract icons
                 style={{
                   width: width * 0.65,
                   height: width * 0.65,
@@ -97,8 +100,8 @@ const Tutorial = ({ navigation }) => {
               />
             </View>
           ),
-          title: 'Let’s Build Together',
-          subtitle: 'Confirm your project and collaborate with our expert team.',
+          title: 'Let’s Get Started',
+          subtitle: 'Already have an account? Sign In',
         },
       ]}
     />

@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {
-  View,
-  BackHandler,
-  StyleSheet,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, BackHandler, StyleSheet, ScrollView } from 'react-native';
 
 import HeroSection from '../components/HeroSection';
-import { ScrollView } from 'react-native-gesture-handler';
 import ServicesPreview from '../components/ServicesPreview';
 import { SpecialOffersCarousel } from '../components/SpecialOffersCarousel';
 import { ServicesSection } from '../components/services/ServicesSection';
+import ServicesCategorySection from '../components/services tags/ServicesCategorySection';
+import { style } from 'deprecated-react-native-prop-types/DeprecatedViewPropTypes';
 
-const Dashboard = ({navigation}) => {
+const Dashboard = ({ navigation }) => {
   const [searching, setSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [searched, setSearched] = useState(false);
@@ -26,27 +23,56 @@ const Dashboard = ({navigation}) => {
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
     return () => {
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handleBackButtonClick,
-      );
+      BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
     };
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <HeroSection />
-      <SpecialOffersCarousel/>
-      <ServicesSection />
-      <ServicesPreview />
+    <ScrollView nestedScrollEnabled={true} style={styles.container} contentContainerStyle={styles.scrollContent}>
+      
+      <View style={styles.topSection}>
+        <SpecialOffersCarousel />
+      </View>
+
+      {/* ✅ Wrap in colored container */}
+      <View style={styles.coloredSection}>
+        <ServicesCategorySection />
+        <ServicesSection />
+      </View>
+
+      <View style={styles.section}>
+        <HeroSection />
+      </View>
+
+      <View style={styles.section}>
+        <ServicesPreview />
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  topSection:{
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20,
+    backgroundColor:"#0B2E56"
+  },
   container: {
-    backgroundColor: '#fff', // or any suitable background
+    backgroundColor: '#fff',
     flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 16,
+  },
+  section: {
+    marginBottom: -20,
+  },
+  coloredSection: {
+    backgroundColor: '#F5F5F5',
+    paddingVertical: 16,
+    paddingHorizontal: 0,
+    borderTopRightRadius:26,
+    borderTopLeftRadius:26
   },
 });
 

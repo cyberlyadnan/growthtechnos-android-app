@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export const ServiceCard = ({ item }) => {
   return (
@@ -9,11 +9,10 @@ export const ServiceCard = ({ item }) => {
       style={[styles.card, item.isHighlighted && styles.highlightedCard]}
     >
       <View style={styles.iconWrapper}>
-        <FontAwesome5
-          name={item.iconName || 'tools'}
-          size={24}
-          color={item.isHighlighted ? '#fff' : '#284B71'}
-          solid={item.iconSolid || false}
+        <Image
+          source={item.icon}
+          style={{ width: 28, height: 28, tintColor: item.isHighlighted ? '#fff' : '#284B71' }}
+          resizeMode="contain"
         />
       </View>
       <Text style={[styles.date, item.isHighlighted && styles.lightText]}>{item.date}</Text>
@@ -23,6 +22,7 @@ export const ServiceCard = ({ item }) => {
     </LinearGradient>
   );
 };
+
 
 
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     date: {
       fontSize: 12,
       color: '#999',
-      marginBottom: 6,
+      marginBottom: 4,
     },
     title: {
       fontSize: 16,
