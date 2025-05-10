@@ -1,86 +1,68 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Linking,
-  ScrollView,
-  StyleSheet,
-  Alert,
-} from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-  faPaperPlane,
-} from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const injectedJS = `
+  function hideElements() {
+    // Hide elements by ID
+    var header = document.getElementById('masthead');
+    if (header) header.style.display = 'none';
 
-  const handleChange = (key, value) => setForm({ ...form, [key]: value });
-
-  const handleSubmit = () => {
-    if (!form.name || !form.email || !form.message) {
-      Alert.alert('Please fill all fields');
-      return;
+    const element = document.querySelector('[data-id="989c1a5"]');
+    if (element) {
+        element.style.display = 'none';
     }
-    Alert.alert('Message Sent!', 'We will contact you shortly.');
-    setForm({ name: '', email: '', message: '' });
-  };
+
+    var footer = document.getElementById('hide_nav_bar_android_app');
+    if (footer) {
+      footer.style.display = 'none';
+      console.log('Footer hidden successfully');
+    } else {
+      console.log('Footer element not found');
+    }
+
+    // Hide elements by class
+    var navElements = document.getElementsByClassName('ctc_s_3 ctc_nb');
+    if (navElements.length > 0) {
+      for (let i = 0; i < navElements.length; i++) {
+        navElements[i].style.display = 'none';
+      }
+    }
+
+    var banner = document.querySelector('.page-banner');
+    if (banner) banner.style.display = 'none';
+
+    // Optional: remove padding/margins
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+  }
+
+  // Try immediately
+  hideElements();
+
+  // Also try on load in case elements aren't ready yet
+  document.addEventListener('DOMContentLoaded', hideElements);
+  window.addEventListener('load', hideElements);
+
+  // For single page apps that might load content later
+  setInterval(hideElements, 1000);
+
+  true;
+`;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Contact Us</Text>
-
-      <View style={styles.infoContainer}>
-        <View style={styles.infoRow}>
-          <FontAwesomeIcon icon={faPhone} size={18} color="#284B71" />
-          <Text style={styles.infoText} onPress={() => Linking.openURL('tel:+919999999999')}>+91 99999 99999</Text>
-        </View>
-        <View style={styles.infoRow}>
-          <FontAwesomeIcon icon={faEnvelope} size={18} color="#284B71" />
-          <Text style={styles.infoText} onPress={() => Linking.openURL('mailto:info@webagency.com')}>info@webagency.com</Text>
-        </View>
-        <View style={styles.infoRow}>
-          <FontAwesomeIcon icon={faMapMarkerAlt} size={18} color="#284B71" />
-          <Text style={styles.infoText}>Saharanpur, Uttar Pradesh, India</Text>
-        </View>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>Your Name</Text>
-        <TextInput
-          placeholder="Enter name"
-          value={form.name}
-          onChangeText={(val) => handleChange('name', val)}
-          style={styles.input}
-        />
-        <Text style={styles.label}>Your Email</Text>
-        <TextInput
-          placeholder="Enter email"
-          value={form.email}
-          onChangeText={(val) => handleChange('email', val)}
-          style={styles.input}
-          keyboardType="email-address"
-        />
-        <Text style={styles.label}>Your Message</Text>
-        <TextInput
-          placeholder="Type your message"
-          value={form.message}
-          onChangeText={(val) => handleChange('message', val)}
-          style={[styles.input, { height: 100 }]}
-          multiline
-        />
-
-        <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-          <FontAwesomeIcon icon={faPaperPlane} color="#fff" size={16} />
-          <Text style={styles.buttonText}>Send Message</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <WebView
+        source={{ uri: 'https://growthtechnos.com/contact-us/' }}
+        style={styles.webview}
+        originWhitelist={['*']}
+        javaScriptEnabled
+        domStorageEnabled
+        startInLoadingState
+        injectedJavaScript={injectedJS}
+      />
+    </View>
   );
 };
 
@@ -88,65 +70,15 @@ export default Contact;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 24,
-    backgroundColor: '#f9f9f9',
-    flexGrow: 1,
-  },
-  heading: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#284B71',
-    marginBottom: 16,
-  },
-  infoContainer: {
-    marginBottom: 24,
-    gap: 10,
-  },
-  infoRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginBottom: 4,
-  },
-  infoText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  card: {
+    flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
+    overflow: 'hidden',
+    // borderRadius: 16,
+    elevation: 6,
+    paddingBottom:60
+  },
+  webview: {
+    flex: 1,
     borderRadius: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 5,
-  },
-  label: {
-    marginBottom: 6,
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#555',
-  },
-  input: {
-    backgroundColor: '#f2f2f2',
-    borderRadius: 12,
-    padding: 12,
-    fontSize: 15,
-    marginBottom: 16,
-  },
-  button: {
-    backgroundColor: '#284B71',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-    padding: 14,
-    borderRadius: 12,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: '600',
   },
 });

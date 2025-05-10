@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel-v4';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faLink, faHeart as faHeartFilled} from '@fortawesome/free-solid-svg-icons';
+import {faLink, faHeart as faHeartFilled, faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 import {faHeart} from '@fortawesome/free-regular-svg-icons';
 import {ProductStore} from '../store/product';
 import {observer} from 'mobx-react';
@@ -63,7 +63,7 @@ export const Product = observer(() => {
   );
 
   return (
-    <View>
+    <View style={{paddingBottom:50}}>
       <ScrollView>
         {/* Image Carousel */}
         <Carousel
@@ -78,22 +78,26 @@ export const Product = observer(() => {
 
         {/* Like Button */}
         <Pressable
-          onPress={() => addToWishlist(product)}
-          style={{
-            position: 'absolute',
-            top: 20,
-            right: 20,
-            width: 50,
-            height: 50,
-            backgroundColor: '#fff',
-            borderRadius: 25,
-            borderWidth: 1,
-            borderColor: '#ddd',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <FontAwesomeIcon icon={liked ? faHeartFilled : faHeart} color="red" />
-        </Pressable>
+  onPress={() => Linking.openURL('https://your-portfolio-website.com')}
+  style={{
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    width: 50,
+    height: 50,
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}>
+  <FontAwesomeIcon 
+    icon={faExternalLinkAlt} // Using external link icon
+    color="#06548B" // Changed to a more neutral color
+    size={20} // Adjust size as needed
+  />
+</Pressable>
 
         {/* Content Section */}
         <View style={{padding: 20}}>

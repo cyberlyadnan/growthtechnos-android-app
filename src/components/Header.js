@@ -47,9 +47,9 @@ export const Header = observer(({ navigationRef, hideCart, setOpenMenu }) => {
         </Pressable>
       )} */}
 
-      {AuthStore.state.isAuthenticated && (
+      {/* {AuthStore.state.isAuthenticated && ( */}
         <Pressable
-          onPress={() => AuthStore.logout()}
+          // onPress={() => AuthStore.logout()}
           style={styles.iconButton}>
           <Svg height="22" width="22" viewBox="0 0 512 512">
             <Path
@@ -58,7 +58,7 @@ export const Header = observer(({ navigationRef, hideCart, setOpenMenu }) => {
             />
           </Svg>
         </Pressable>
-      )}
+      {/* )} */}
     </View>
   );
 });

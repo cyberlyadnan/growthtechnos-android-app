@@ -167,25 +167,28 @@ const Tabs = () => {
 
 export const Navigator = observer(() => {
   const [openMenu, setOpenMenu] = useState(false);
-  const {
-    state: { isAuthenticated },
-  } = AuthStore;
+  // const {
+  //   state: { isAuthenticated },
+  // } = AuthStore;
 
-  return isAuthenticated ? (
-    <SideMenu menu={menu} isOpen={openMenu} autoClosing={true}>
-      <Header setOpenMenu={setOpenMenu} navigationRef={navigationRef} />
-      <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Main" component={Tabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SideMenu>
-  ) : (
+  // return isAuthenticated ? (
+  //   <SideMenu menu={menu} isOpen={openMenu} autoClosing={true}>
+  //     <Header setOpenMenu={setOpenMenu} navigationRef={navigationRef} />
+  //     <NavigationContainer ref={navigationRef}>
+  //       <Stack.Navigator screenOptions={{ headerShown: false }}>
+  //         <Stack.Screen name="Main" component={Tabs} />
+  //       </Stack.Navigator>
+  //     </NavigationContainer>
+  //   </SideMenu>
+  // ) : 
+  return (
     <NavigationContainer ref={navigationRef}>
+      <Header setOpenMenu={setOpenMenu} navigationRef={navigationRef} />
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Onboarding">
         <Stack.Screen name="Onboarding" component={Tutorial} />
-        <Stack.Screen name="signup" component={Signup} />
-        <Stack.Screen name="login" component={Login} />
+        {/* <Stack.Screen name="signup" component={Signup} /> */}
+        <Stack.Screen name="Main" component={Tabs} />
+        {/* <Stack.Screen name="login" component={Login} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
